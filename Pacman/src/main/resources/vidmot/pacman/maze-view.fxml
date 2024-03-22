@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import vidmot.pacman.Pacman?>
+<!--Custom component sem er Pane hlutur og inniheldur einn Pacman eins og er.
+Hér munu veggirnir koma sem children held ég. Pacman byrjar í 400 400 sem er miðjan á 800 800 borðinu-->
+<fx:root type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml" maxHeight="800" maxWidth="800"
+         minHeight="700" minWidth="700">
+    <Pacman fx:id="fxPacman" layoutX="400" layoutY="400"/>
+</fx:root>
