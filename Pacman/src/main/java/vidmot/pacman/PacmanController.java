@@ -13,7 +13,7 @@ public class PacmanController {
     private final HashMap<KeyCode, Stefna> map= new HashMap<KeyCode, Stefna>();
 
     @FXML
-    public Maze fxLeikbord;
+    private Maze fxMaze;
 
     public void initialize(){
 
@@ -27,7 +27,7 @@ public class PacmanController {
         map.put(KeyCode.DOWN, Stefna.NIDUR);
         map.put(KeyCode.RIGHT, Stefna.HAEGRI);
         map.put(KeyCode.LEFT, Stefna.VINSTRI);
-        fxLeikbord.getScene().addEventFilter(KeyEvent.ANY, this::stefna);
+        fxMaze.getScene().addEventFilter(KeyEvent.ANY, this::stefna);
     }
 
     /**
@@ -35,10 +35,35 @@ public class PacmanController {
      * Stefna fengin úr map í orvatakkar fallinu.
      */
     private void stefna(KeyEvent event){
-        if(map.get(event.getCode()) != null){
-            fxLeikbord.setStefna(map.get(event.getCode()));
+        if(map.get(event.getCode()) != null && fxMaze.erLoglegStefna(map.get(event.getCode()))){
+            fxMaze.setStefna(map.get(event.getCode()));
+        }
+        if(fxMaze.erAVegg()){
+            switch (fxMaze.getFyrriPacmanStefna()) {
+                case Stefna.UPP:
+                    if(map.get(event.getCode()) != Stefna.UPP){
+                        fxMaze.setPacmanLayoutY(fxMaze.getPacmanLayoutY(), +5);
+                    }
+                    break;
+                case Stefna.NIDUR:
+                    if(map.get(event.getCode()) != Stefna.NIDUR){
+                        fxMaze.setPacmanLayoutY(fxMaze.getPacmanLayoutY(), -5);
+                    }
+                    break;
+                case Stefna.HAEGRI:
+                    if(map.get(event.getCode()) != Stefna.HAEGRI){
+                        fxMaze.setPacmanLayoutX(fxMaze.getPacmanLayoutX(), -5);
+                    }
+                    break;
+                case Stefna.VINSTRI:
+                    if(map.get(event.getCode()) != Stefna.VINSTRI){
+                        fxMaze.setPacmanLayoutX(fxMaze.getPacmanLayoutX(), +5);
+                    }
+                    break;
+            }
         }
     }
+
 
     /**
      * Hefur loop leiksins sem lætur pacamn hreyfast sjálfur. Kallar á 20ms fresti á afram aðferðina sem
@@ -46,9 +71,9 @@ public class PacmanController {
      * smá breather áður en leikur hefst. Keyrir endalaust.
      */
     public void hefjaLeik() {
-        KeyFrame k = new KeyFrame(Duration.millis(20),
-                e -> {
-                    fxLeikbord.afram();
+        KeyFrame k = new KeyFrame(Duration.millis(10),
+                e ->{
+                    fxMaze.afram();
                 });
         Timeline t = new Timeline(k);
         t.setDelay(Duration.seconds(3));

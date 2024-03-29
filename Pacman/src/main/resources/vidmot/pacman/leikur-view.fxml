@@ -7,6 +7,6 @@ leikborðinu þá fer það hér fyrir ofan eða neðan maze.-->
 <VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
       fx:controller="vidmot.pacman.PacmanController" prefWidth="800" prefHeight="800">
     <children>
-        <Maze prefHeight="800" prefWidth="800" style="-fx-background-color: BLACK; -fx-border-color: BLUE; -fx-border-width: 3;" fx:id="fxLeikbord"/>
+        <Maze prefHeight="800" prefWidth="800" style="-fx-background-color: BLACK; -fx-border-color: BLUE; -fx-border-width: 3;" fx:id="fxMaze"/>
     </children>
 </VBox>
