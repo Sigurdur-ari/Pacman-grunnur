@@ -13,14 +13,14 @@ public class PacmanApplication extends Application {
         Scene s = new Scene(new Pane());
         ViewSwitcher.setScene (s);
         ViewSwitcher.switchTo(View.LEIKUR);
-        PacmanController goldController = (PacmanController) ViewSwitcher.lookup(View.LEIKUR);
+        PacmanController pacmanController = (PacmanController) ViewSwitcher.lookup(View.LEIKUR);
         stage.setTitle("PACMAN");
         stage.setScene(s);
         stage.show();
 
         //setja upp orvatakka og hefja leikinn.
-        goldController.orvatakkar();
-        goldController.hefjaLeik();
+        pacmanController.orvatakkar();
+        pacmanController.hefjaLeik();
     }
 
 

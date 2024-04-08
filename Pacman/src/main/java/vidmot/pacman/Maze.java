@@ -32,6 +32,7 @@ public class Maze extends Pane {
     @FXML
     private Label fxStig;
 
+
     @FXML
     private Label fxTimi;
 
@@ -54,6 +55,7 @@ public class Maze extends Pane {
         }
         fxStig.textProperty().bind(Stig.asString("Stig: %d"));
         fxTimi.textProperty().bind(Timi.asString("Tími: %d"));
+
     }
 
     public boolean erAVegg(){
