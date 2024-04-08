@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import vidmot.pacman.Maze?>
+<!--Eitt Vbox sem inniheldur Maze custom component. Ef stig eru sett inn sem lable undir eða yfir
+leikborðinu þá fer það hér fyrir ofan eða neðan maze.-->
+<VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="vidmot.pacman.PacmanController" prefWidth="800" prefHeight="800">
+    <children>
+        <Maze prefHeight="800" prefWidth="800" style="-fx-background-color: BLACK; -fx-border-color: BLUE; -fx-border-width: 3;" fx:id="fxMaze"/>
+    </children>
+</VBox>
