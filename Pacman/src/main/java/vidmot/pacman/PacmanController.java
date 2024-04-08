@@ -42,22 +42,22 @@ public class PacmanController {
             switch (fxMaze.getFyrriPacmanStefna()) {
                 case Stefna.UPP:
                     if(map.get(event.getCode()) != Stefna.UPP){
-                        fxMaze.setPacmanLayoutY(fxMaze.getPacmanLayoutY(), +5);
+                        fxMaze.setPacmanLayoutY(fxMaze.getPacmanLayoutY(), +1);
                     }
                     break;
                 case Stefna.NIDUR:
                     if(map.get(event.getCode()) != Stefna.NIDUR){
-                        fxMaze.setPacmanLayoutY(fxMaze.getPacmanLayoutY(), -5);
+                        fxMaze.setPacmanLayoutY(fxMaze.getPacmanLayoutY(), -1);
                     }
                     break;
                 case Stefna.HAEGRI:
                     if(map.get(event.getCode()) != Stefna.HAEGRI){
-                        fxMaze.setPacmanLayoutX(fxMaze.getPacmanLayoutX(), -5);
+                        fxMaze.setPacmanLayoutX(fxMaze.getPacmanLayoutX(), -1);
                     }
                     break;
                 case Stefna.VINSTRI:
                     if(map.get(event.getCode()) != Stefna.VINSTRI){
-                        fxMaze.setPacmanLayoutX(fxMaze.getPacmanLayoutX(), +5);
+                        fxMaze.setPacmanLayoutX(fxMaze.getPacmanLayoutX(), +1);
                     }
                     break;
             }
@@ -71,9 +71,12 @@ public class PacmanController {
      * smá breather áður en leikur hefst. Keyrir endalaust.
      */
     public void hefjaLeik() {
+        fxMaze.buaTilPellets(fxMaze);
         KeyFrame k = new KeyFrame(Duration.millis(10),
                 e ->{
                     fxMaze.afram();
+                    fxMaze.safnaPellet();
+                    fxMaze.safnaCherry();
                 });
         Timeline t = new Timeline(k);
         t.setDelay(Duration.seconds(3));

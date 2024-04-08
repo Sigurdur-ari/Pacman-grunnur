@@ -1,20 +1,38 @@
 package vidmot.pacman;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 public class Maze extends Pane {
     @FXML
     private Pacman fxPacman;
 
     @FXML
+    private Maze fxMaze;
+
+    @FXML
     private Group veggirGroup;
+
+    @FXML
+    private Group pelletGroup;
+
+    @FXML
+    private Group cherryGroup;
+
+    @FXML
+    private Label fxStig;
+
+    private IntegerProperty Stig = new SimpleIntegerProperty(0);
 
     /**
      * Les inn FXML skránna fyrir Maze, til að gera tvö borð væri hægt að útfæra Maze1 og Maze2 t.d.
@@ -29,6 +47,7 @@ public class Maze extends Pane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        fxStig.textProperty().bind(Stig.asString("Stig: %d"));
     }
 
     public boolean erAVegg(){
@@ -40,8 +59,6 @@ public class Maze extends Pane {
         }
         return false;
     }
-
-
 
     /**
      * Setur stefnuna á pacman
@@ -127,4 +144,57 @@ public class Maze extends Pane {
         return false;
     }
 
+    public void safnaPellet() {
+        Iterator<Node> iterator = pelletGroup.getChildren().iterator();
+        while (iterator.hasNext()) {
+            Node pellet = iterator.next();
+            if (Collectables.erAPellet(fxPacman, pellet)) {
+                iterator.remove();
+                gefaStig(100);
+            }
+        }
+    }
+
+    public void safnaCherry() {
+        Iterator<Node> iterator = cherryGroup.getChildren().iterator();
+        while (iterator.hasNext()) {
+            Node cherry = iterator.next();
+            if (Collectables.erACherry(fxPacman, cherry)) {
+                iterator.remove();
+                gefaStig(500);
+            }
+        }
+    }
+
+    public void buaTilPellets(Maze fxMaze) {
+        for (int x = 0; x <= 800; x += 25) {
+            for (int y = 0; y <= 800; y += 25) {
+                Iterator<Node> veggirIterator = veggirGroup.getChildren().iterator();
+                Iterator<Node> cherryIterator = cherryGroup.getChildren().iterator();
+                Pellet newPellet = new Pellet();
+                newPellet.setLayoutX(x);
+                newPellet.setLayoutY(y);
+                pelletGroup.getChildren().add(newPellet);
+                while (veggirIterator.hasNext()) {
+                    Node veggir = veggirIterator.next();
+                    if (Collectables.erEkkiEinmana(newPellet, veggir)) {
+                        pelletGroup.getChildren().remove(newPellet);
+                    }
+                }
+                while (cherryIterator.hasNext()) {
+                    Node cherry = cherryIterator.next();
+                    if (Collectables.erEkkiEinmana(newPellet, cherry)) {
+                        pelletGroup.getChildren().remove(newPellet);
+                    }
+                }
+                if (Collectables.erAPellet(fxPacman,newPellet)) {
+                    pelletGroup.getChildren().remove(newPellet);
+                }
+            }
+        }
+    }
+
+    private void gefaStig(int gefinnStig) {
+        Stig.set(Stig.get() + gefinnStig);
+    }
 }

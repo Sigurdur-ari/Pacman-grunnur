@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--Custom component sem er Circle og skilgreinir radíus á pacman.-->
-<fx:root xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml" type="javafx.scene.shape.Circle"
-            fill="yellow" radius="15">
-
-</fx:root>
