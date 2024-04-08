@@ -92,7 +92,7 @@ public class PacmanController {
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
         y.setDelay(Duration.seconds(3));
-        y.setCycleCount(5);
+        y.setCycleCount(120);
         y.setOnFinished(event -> {
             if (fxMaze.erLeikLokid()){
                 System.out.println("stopp");

@@ -38,7 +38,7 @@ public class Maze extends Pane {
 
     private IntegerProperty Stig = new SimpleIntegerProperty(0);
 
-    private IntegerProperty Timi = new SimpleIntegerProperty(5);
+    private IntegerProperty Timi = new SimpleIntegerProperty(120);
 
     public int getStig() {
         return Stig.get();
