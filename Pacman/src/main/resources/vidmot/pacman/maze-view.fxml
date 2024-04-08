@@ -6,6 +6,7 @@ Hér munu veggirnir koma sem children held ég. Pacman byrjar í 400 400 sem er 
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.*?>
 <?import vidmot.pacman.Pacman?>
+<?import javafx.scene.control.Label?>
 <fx:root type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml" maxHeight="800" maxWidth="800"
          minHeight="700" minWidth="700">
@@ -53,4 +54,5 @@ Hér munu veggirnir koma sem children held ég. Pacman byrjar í 400 400 sem er 
         <Rectangle fill="DODGERBLUE" height="25.0" layoutX="582.0" layoutY="149.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="57.0" />
         <Rectangle fill="DODGERBLUE" height="25.0" layoutX="582.0" layoutY="174.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="57.0" />
     </Group>
+    <Label alignment="CENTER" layoutX="362" layoutY="730" prefHeight="58.0" prefWidth="85.0" text="Label" />     
 </fx:root>
