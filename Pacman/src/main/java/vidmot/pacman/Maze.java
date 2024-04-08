@@ -40,6 +40,10 @@ public class Maze extends Pane {
 
     private IntegerProperty Timi = new SimpleIntegerProperty(5);
 
+    public int getStig() {
+        return Stig.get();
+    }
+
     /**
      * Les inn FXML skránna fyrir Maze, til að gera tvö borð væri hægt að útfæra Maze1 og Maze2 t.d.
      * og hafa þá svipaða skrá sem heldur bara utan um sitt hvort mazeið.

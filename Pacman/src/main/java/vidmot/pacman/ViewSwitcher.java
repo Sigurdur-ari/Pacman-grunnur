@@ -3,6 +3,7 @@ package vidmot.pacman;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -71,5 +72,15 @@ public class ViewSwitcher {
 
     public static Object lookup(View v) {
         return controllers.get(v);
+    }
+
+    public static void changeWindowSize(int width, int height) {
+        if (scene != null && scene.getWindow() != null && scene.getWindow() instanceof Stage) {
+            Stage stage = (Stage) scene.getWindow();
+            stage.setWidth(width);
+            stage.setHeight(height);
+        } else {
+            System.out.println("No scene or stage found to change window size.");
+        }
     }
 }

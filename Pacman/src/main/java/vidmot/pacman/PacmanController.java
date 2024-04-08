@@ -99,6 +99,13 @@ public class PacmanController {
                 t.stop();
                 y.stop();
                 ViewSwitcher.switchTo(View.DIALOG);
+                ViewSwitcher.changeWindowSize(400, 350);
+                DialogController dialogController = (DialogController) ViewSwitcher.lookup(View.DIALOG);
+                if (dialogController != null) {
+                    dialogController.setjaLokastig(fxMaze.getStig());
+                } else {
+                    System.out.println("DialogController not found.");
+                }
             }
         });
         y.play();
