@@ -65,6 +65,8 @@ public class PacmanController {
     }
 
 
+
+
     /**
      * Hefur loop leiksins sem lætur pacamn hreyfast sjálfur. Kallar á 20ms fresti á afram aðferðina sem
      * er skilgrein í maze þar sem kallað er á pacman. Timelineið hefur delay 3 sek til þess að gefa notanda
@@ -77,10 +79,28 @@ public class PacmanController {
                     fxMaze.afram();
                     fxMaze.safnaPellet();
                     fxMaze.safnaCherry();
+
+                });
+        KeyFrame j = new KeyFrame(Duration.seconds(1),
+                e ->{
+                    fxMaze.minnkaTima();
+
                 });
         Timeline t = new Timeline(k);
+        Timeline y = new Timeline(j);
         t.setDelay(Duration.seconds(3));
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
+        y.setDelay(Duration.seconds(3));
+        y.setCycleCount(5);
+        y.setOnFinished(event -> {
+            if (fxMaze.erLeikLokid()){
+                System.out.println("stopp");
+                t.stop();
+                y.stop();
+                ViewSwitcher.switchTo(View.DIALOG);
+            }
+        });
+        y.play();
     }
 }

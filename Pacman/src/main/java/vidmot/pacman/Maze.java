@@ -32,7 +32,13 @@ public class Maze extends Pane {
     @FXML
     private Label fxStig;
 
+
+    @FXML
+    private Label fxTimi;
+
     private IntegerProperty Stig = new SimpleIntegerProperty(0);
+
+    private IntegerProperty Timi = new SimpleIntegerProperty(5);
 
     /**
      * Les inn FXML skránna fyrir Maze, til að gera tvö borð væri hægt að útfæra Maze1 og Maze2 t.d.
@@ -48,6 +54,8 @@ public class Maze extends Pane {
             throw new RuntimeException(exception);
         }
         fxStig.textProperty().bind(Stig.asString("Stig: %d"));
+        fxTimi.textProperty().bind(Timi.asString("Tími: %d"));
+
     }
 
     public boolean erAVegg(){
@@ -196,5 +204,13 @@ public class Maze extends Pane {
 
     private void gefaStig(int gefinnStig) {
         Stig.set(Stig.get() + gefinnStig);
+    }
+
+    public void minnkaTima() {
+        Timi.set(Timi.get() - 1);
+    }
+
+    public boolean erLeikLokid() {
+        return Timi.get() == 0;
     }
 }

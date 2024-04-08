@@ -2,8 +2,7 @@ package vidmot.pacman;
 
 public enum View {
     MENU("menu-view.fxml"),
-
-    LEIKUR("leikur-view.fxml");
+    DIALOG("dialog.fxml"), LEIKUR("leikur-view.fxml");
 
 
     private final String fileName;
