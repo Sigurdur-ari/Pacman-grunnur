@@ -29,7 +29,7 @@ public class Pacman extends Circle {
     /**
      * Aðferð sem færir pacman áfram eftir hver stefnan er. Loopar frá hægri til vinstri og öfugt
      * en engin mörk eru eins og er á upp og niður færslunni. Tekur tillit til þess að pacman byrjar í
-     * stöðunni x=400 og y=400 (sjá pacman-view.fxml).
+     * stöðunni x=20 og y=400 (sjá maze-view.fxml).
      */
     public void afram(){
         Maze parent = (Maze) this.getParent();
@@ -45,15 +45,27 @@ public class Pacman extends Circle {
         setCenterY((int) (this.getCenterY() - Math.sin(Math.toRadians(getStefnaGradur())) * HRADI) % parent.getHeight());
     }
 
+    /**
+     * Skilar stefnu pacman í gráðum.
+     * @return gráðurnar.
+     */
     public double getStefnaGradur() {
         return stefna.getGradur();
     }
 
+    /**
+     * Setur fyrri stefnu sem núverandi stefnu og núverandi stefnu sem næstu stefnu. 
+     * @param stefna stefnan fengir frá lyklaborði.
+     */
     public void setStefna(Stefna stefna) {
         fyrriStefna = this.stefna;
         this.stefna = stefna;
     }
 
+    /**
+     * Skilar stefnunni sem pacman var í á undan núverandi stefnu.
+     * @return
+     */
     public Stefna getFyrriStefna() {
         return fyrriStefna;
     }

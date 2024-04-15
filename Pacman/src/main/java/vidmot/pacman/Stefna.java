@@ -1,5 +1,8 @@
 package vidmot.pacman;
 
+/**
+ * Klasi fenginn úr goldrush verkefni.
+ */
 public enum Stefna {
     UPP (90),
     NIDUR(270),

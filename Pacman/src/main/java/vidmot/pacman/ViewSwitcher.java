@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Klasi tekinn úr goldrush verkefni. Einni aðferð bætt við.
+ */
+
 public class ViewSwitcher {
     private static final Map<View, Parent> cache = new HashMap<>();
 
@@ -74,6 +78,11 @@ public class ViewSwitcher {
         return controllers.get(v);
     }
 
+    /**
+     * Viðbótar aðferð sem breytir stærð gluggans sem er.
+     * @param width breidd glugga
+     * @param height hæð glugga.
+     */
     public static void changeWindowSize(int width, int height) {
         if (scene != null && scene.getWindow() != null && scene.getWindow() instanceof Stage) {
             Stage stage = (Stage) scene.getWindow();

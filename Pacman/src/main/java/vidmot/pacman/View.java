@@ -1,5 +1,8 @@
 package vidmot.pacman;
 
+/**
+ * Klasi fenginn úr goldrush verkefni
+ */
 public enum View {
     MENU("menu-view.fxml"),
     DIALOG("dialog.fxml"), LEIKUR("leikur-view.fxml");

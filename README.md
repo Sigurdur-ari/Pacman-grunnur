@@ -3,7 +3,7 @@
 Þetta verkefni er óbein eftirlíking af klassíska leiknum Pacman. 
 
 ## keyrsla
-Til þess að sækja og keyra forritið er hægt að downloada þessu repoi og unzippa fileið og svo opna verkefnið í Intellij. Mikilvægt er að opna möppuna sem heitir "Pacman" í Intellij en ekki yfirmöppuna sem heitir "Pacman-grunnur". Þegar "Pacman" mappan er opnuð í Intellij þarf bara að compilea með maven og keyra með maven og þá ætti leikurinn að fara af stað. 
+Til þess að sækja og keyra forritið er hægt að downloada þessu repoi og unzippa fileið og svo opna verkefnið í Intellij. Mikilvægt er að opna möppuna sem heitir "Pacman" í Intellij en ekki yfirmöppuna sem heitir "Pacman-grunnur". Þegar "Pacman" mappan er opnuð í Intellij þarf bara að compilea með maven og keyra með maven og þá ætti leikurinn að fara af stað. Þetta verkefni var skrifað í java 21 og ætti að vera keyrt eftir því.  
 
 
 ## Upplýsingar um leikinn

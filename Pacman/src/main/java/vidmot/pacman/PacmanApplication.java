@@ -9,6 +9,9 @@ import java.io.IOException;
 
 public class PacmanApplication extends Application {
     @Override
+    /**
+     * Setur senuna og skiptir í leikborðs view. Setur upp örvatakka og hefur leikinn.
+     */
     public void start(Stage stage) throws IOException {
         Scene s = new Scene(new Pane());
         ViewSwitcher.setScene (s);

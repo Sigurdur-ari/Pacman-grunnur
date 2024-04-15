@@ -7,6 +7,9 @@ import java.io.IOException;
 
 public class Cherry extends ImageView {
 
+    /**
+     * Les inn custom component skránna af cherry hlut.
+     */
     public Cherry(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cherry-view.fxml"));
         fxmlLoader.setRoot(this);

@@ -9,10 +9,17 @@ public class DialogController {
     private Label lokastig;
 
 
+    /**
+     * Handler fyrir hætta takkan í dialoginum.
+     */
     public void onHaetta(){
         System.exit(0);
     }
 
+    /**
+     * Setur lokastigin sem text í label á dialoginum.
+     * @param stig Lokastig leiksins.
+     */
     public void setjaLokastig(int stig){
         lokastig.setText(String.valueOf(stig));
     }

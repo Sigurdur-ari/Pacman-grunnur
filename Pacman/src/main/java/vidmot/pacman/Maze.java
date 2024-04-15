@@ -45,8 +45,7 @@ public class Maze extends Pane {
     }
 
     /**
-     * Les inn FXML skránna fyrir Maze, til að gera tvö borð væri hægt að útfæra Maze1 og Maze2 t.d.
-     * og hafa þá svipaða skrá sem heldur bara utan um sitt hvort mazeið.
+     * Les inn FXML skránna fyrir Maze. Bindir stig og tíma label við vinnslu.
      */
     public Maze(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("maze-view.fxml"));
@@ -62,6 +61,10 @@ public class Maze extends Pane {
 
     }
 
+    /**
+     * Athugar hvort pacman sé inni í vegg.
+     * @return true ef pacman er á vegg.
+     */
     public boolean erAVegg(){
         for (Node node : veggirGroup.getChildren()) {
             Rectangle wall = (Rectangle) node;
@@ -79,25 +82,47 @@ public class Maze extends Pane {
         fxPacman.setStefna(stefna);
     }
 
+    /**
+     * Nær í fyrri stefnu pacman.
+     * @return Stefnugildinu sem pacman var í á undan úverandi.
+     */
     public Stefna getFyrriPacmanStefna(){
         return fxPacman.getFyrriStefna();
     }
 
+    /**
+     * Skilar x staðsetningu pacman
+     * @return x-hnit
+     */
     public int getPacmanLayoutX(){
         return (int) fxPacman.getLayoutX();
     }
+
+    /**
+     * Skilar y staðsetningu pacman
+     * @return y-hnit.
+     */
     public int getPacmanLayoutY(){
         return (int) fxPacman.getLayoutY();
     }
 
+    /**
+     * Setur x staðsetningu pacman
+     * @param nuvX núverandi x staðsetning
+     * @param breyt breyting sem þarf að eiga sér stað til þess að veggja virkni virki sem skyldi.
+     */
     public void setPacmanLayoutX(int nuvX, int breyt){
         fxPacman.setLayoutX(nuvX + breyt);
     }
+
+    /**
+     * Setur y staðsetningu pacman
+     * @param nuvY nýverandi y staðsetning
+     * @param breyt breyting sem þarf að eiga sér stað til þess að veggja virkni virki sem skyldi.
+     */
     public void setPacmanLayoutY(int nuvY, int breyt){
         fxPacman.setLayoutY(nuvY + breyt);
     }
-
-
 
     /**
      * Kallar á afram aðferðinni á pacman.
@@ -108,6 +133,12 @@ public class Maze extends Pane {
         }
     }
 
+    /**
+     * Aðferð sem atuhgar hvort stefna sem verið er að reyna að setja á pacman sé lögleg. Þ.e. hvort pacman
+     * muni fara inn í vegg í nýju stefnunni eða ekki. Hjálpar með veggja virkni.
+     * @param nuverandiStefna Stefna sem pacman er í (áttin að veggnum)
+     * @return true ef stefnan er lögleg.
+     */
     public boolean erLoglegStefna(Stefna nuverandiStefna) {
         double pacmanX = fxPacman.getLayoutX();
         double pacmanY = fxPacman.getLayoutY();
@@ -141,6 +172,12 @@ public class Maze extends Pane {
         return true;
     }
 
+    /**
+     * Hjálparaðferð sem athugar hvort pacman sé enn í vegg ef hann færist 5 px í næstu stefnu.
+     * @param x x hnit pacman
+     * @param y y hnit pacman
+     * @return true ef hann er enn í vegg eftir breytingu.
+     */
     public boolean ennIVegg(int x, int y){
         for (Node barn : veggirGroup.getChildren()) {
             Rectangle veggur = (Rectangle) barn;
@@ -156,6 +193,9 @@ public class Maze extends Pane {
         return false;
     }
 
+    /**
+     * Aðferð sem fjarlægir pellets ef pacman hefur náð þeim og gefur 100 stig fyrir hvert pellet.
+     */
     public void safnaPellet() {
         Iterator<Node> iterator = pelletGroup.getChildren().iterator();
         while (iterator.hasNext()) {
@@ -167,6 +207,9 @@ public class Maze extends Pane {
         }
     }
 
+    /**
+     * Aðferð sem fjarlægir kirsuber af borðinu ef pacman hefur náð því og gefur 500 stig fyrir.
+     */
     public void safnaCherry() {
         Iterator<Node> iterator = cherryGroup.getChildren().iterator();
         while (iterator.hasNext()) {
@@ -178,6 +221,11 @@ public class Maze extends Pane {
         }
     }
 
+    /**
+     * Aðferð sem býr til pellets og kirsuber og setur pellets á alla
+     * lausa staði á borðinu og pellets á ákveðna staði.
+     * @param fxMaze leikborðið
+     */
     public void buaTilPellets(Maze fxMaze) {
         for (int x = 0; x <= 800; x += 25) {
             for (int y = 0; y <= 800; y += 25) {
@@ -206,14 +254,25 @@ public class Maze extends Pane {
         }
     }
 
+    /**
+     * Hækkar stigin um gefin stig
+     * @param gefinnStig stig sem á að hækka um.
+     */
     private void gefaStig(int gefinnStig) {
         Stig.set(Stig.get() + gefinnStig);
     }
 
+    /**
+     * Minnkar tímann um 1 sek.
+     */
     public void minnkaTima() {
         Timi.set(Timi.get() - 1);
     }
 
+    /**
+     * Athugar hvort tíminn sé kominn í 0
+     * @return true ef tíminn er í 0.
+     */
     public boolean erLeikLokid() {
         return Timi.get() == 0;
     }

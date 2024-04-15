@@ -7,6 +7,9 @@ import java.io.IOException;
 
 public class Pellet extends Rectangle {
 
+    /**
+     * Smiður sem les inn custom component skránna af pellets.
+     */
     public Pellet(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pellet-view.fxml"));
         fxmlLoader.setRoot(this);

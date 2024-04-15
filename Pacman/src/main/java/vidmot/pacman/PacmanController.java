@@ -32,7 +32,8 @@ public class PacmanController {
 
     /**
      * Breytir stefnunni á leikborðinu (sem kallar svo á pacman) þannig að pacman breytir um stefnu.
-     * Stefna fengin úr map í orvatakkar fallinu.
+     * Stefna fengin úr map í orvatakkar fallinu. Ef pacman er á vegg þá leyfir það ekki frekari hreyfingu í átt
+     * að vegnum heldur tekur það aðeins inn gildi ef það er ný stefna.
      */
     private void stefna(KeyEvent event){
         if(map.get(event.getCode()) != null && fxMaze.erLoglegStefna(map.get(event.getCode()))){
@@ -68,9 +69,9 @@ public class PacmanController {
 
 
     /**
-     * Hefur loop leiksins sem lætur pacamn hreyfast sjálfur. Kallar á 20ms fresti á afram aðferðina sem
-     * er skilgrein í maze þar sem kallað er á pacman. Timelineið hefur delay 3 sek til þess að gefa notanda
-     * smá breather áður en leikur hefst. Keyrir endalaust.
+     * Hefur loop leiksins sem lætur pacamn hreyfast sjálfur. Kallar á 10ms fresti á afram aðferðina sem
+     * er skilgreind í maze þar sem kallað er á pacman. Timelineið hefur delay 3 sek til þess að gefa notanda
+     * smá breather áður en leikur hefst. Keyrir endalaust. Inniheldur einnig timeline sem heldur utan um tíma leiksins.
      */
     public void hefjaLeik() {
         fxMaze.buaTilPellets(fxMaze);

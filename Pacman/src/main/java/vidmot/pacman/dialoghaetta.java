@@ -14,6 +14,10 @@ public class dialoghaetta {
             ButtonBar.ButtonData.OK_DONE);
 
 
+    /**
+     * Býr til nýjan alert dialog.
+     * @return alert dialog a.
+     */
     public static Alert dialoghaetta() {
         Alert a = new Alert(Alert.AlertType.NONE,  "Leikurinn er búinn", BTYPE, HTYPE);
         a.setTitle("Leik lokið");
